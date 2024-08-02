@@ -7,6 +7,8 @@ use std::{
 use nalgebra::Vector3;
 use serde::{Deserialize, Serialize};
 
+pub mod interface;
+
 #[derive(Debug, Clone, PartialEq, PartialOrd, Serialize, Deserialize)]
 pub enum ControlRequest {
     FetchMissionPlan,
