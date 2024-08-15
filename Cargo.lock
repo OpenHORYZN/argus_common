@@ -17,6 +17,7 @@ version = "0.1.0"
 dependencies = [
  "nalgebra",
  "serde",
+ "uuid",
 ]
 
 [[package]]
@@ -27,15 +28,38 @@ checksum = "0c4b4d0bd25bd0b74681c0ad21497610ce1b7c91b1022cd21c80c6fbdd9476b0"
 
 [[package]]
 name = "bytemuck"
-version = "1.16.1"
+version = "1.16.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b236fc92302c97ed75b38da1f4917b5cdda4984745740f153a5d3059e48d725e"
+checksum = "102087e286b4677862ea56cf8fc58bb2cdfa8725c40ffb80fe3a008eb7f2fc83"
+
+[[package]]
+name = "cfg-if"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
+
+[[package]]
+name = "getrandom"
+version = "0.2.15"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c4567c8db10ae91089c99af84c68c38da3ec2f087c3f82960bcdbf3656b6f4d7"
+dependencies = [
+ "cfg-if",
+ "libc",
+ "wasi",
+]
+
+[[package]]
+name = "libc"
+version = "0.2.155"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "97b3888a4aecf77e811145cadf6eef5901f4782c53886191b2f693f24761847c"
 
 [[package]]
 name = "matrixmultiply"
-version = "0.3.8"
+version = "0.3.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7574c1cf36da4798ab73da5b215bbf444f50718207754cb522201d78d1cd0ff2"
+checksum = "9380b911e3e96d10c1f415da0876389aaf1b56759054eeb0de7df940c456ba1a"
 dependencies = [
  "autocfg",
  "rawpointer",
@@ -159,18 +183,18 @@ dependencies = [
 
 [[package]]
 name = "serde"
-version = "1.0.204"
+version = "1.0.208"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bc76f558e0cbb2a839d37354c575f1dc3fdc6546b5be373ba43d95f231bf7c12"
+checksum = "cff085d2cb684faa248efb494c39b68e522822ac0de72ccf08109abde717cfb2"
 dependencies = [
  "serde_derive",
 ]
 
 [[package]]
 name = "serde_derive"
-version = "1.0.204"
+version = "1.0.208"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e0cd7e117be63d3c3678776753929474f3b04a43a080c744d6b0ae2a8c28e222"
+checksum = "24008e81ff7613ed8e5ba0cfaf24e2c2f1e5b8a0495711e44fcd4882fca62bcf"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -192,9 +216,9 @@ dependencies = [
 
 [[package]]
 name = "syn"
-version = "2.0.71"
+version = "2.0.74"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b146dcf730474b4bcd16c311627b31ede9ab149045db4d6088b3becaea046462"
+checksum = "1fceb41e3d546d0bd83421d3409b1460cc7444cd389341a4c880fe7a042cb3d7"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -214,10 +238,26 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b"
 
 [[package]]
-name = "wide"
-version = "0.7.26"
+name = "uuid"
+version = "1.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "901e8597c777fa042e9e245bd56c0dc4418c5db3f845b6ff94fbac732c6a0692"
+checksum = "81dfa00651efa65069b0b6b651f4aaa31ba9e3c3ce0137aaad053604ee7e0314"
+dependencies = [
+ "getrandom",
+ "serde",
+]
+
+[[package]]
+name = "wasi"
+version = "0.11.0+wasi-snapshot-preview1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9c8d87e72b64a3b4db28d11ce29237c246188f4f51057d65a7eab63b7987e423"
+
+[[package]]
+name = "wide"
+version = "0.7.28"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b828f995bf1e9622031f8009f8481a85406ce1f4d4588ff746d872043e855690"
 dependencies = [
  "bytemuck",
  "safe_arch",
@@ -228,8 +268,52 @@ name = "action_msgs"
 version = "1.2.1"
 
 [[patch.unused]]
+name = "actionlib_msgs"
+version = "4.2.4"
+
+[[patch.unused]]
 name = "builtin_interfaces"
 version = "1.2.1"
+
+[[patch.unused]]
+name = "composition_interfaces"
+version = "1.2.1"
+
+[[patch.unused]]
+name = "diagnostic_msgs"
+version = "4.2.4"
+
+[[patch.unused]]
+name = "example_interfaces"
+version = "0.9.3"
+
+[[patch.unused]]
+name = "examples_rclrs_message_demo"
+version = "0.4.1"
+
+[[patch.unused]]
+name = "examples_rclrs_minimal_client_service"
+version = "0.4.1"
+
+[[patch.unused]]
+name = "examples_rclrs_minimal_pub_sub"
+version = "0.4.1"
+
+[[patch.unused]]
+name = "gcs_msgs"
+version = "0.0.0"
+
+[[patch.unused]]
+name = "geometry_msgs"
+version = "4.2.4"
+
+[[patch.unused]]
+name = "lifecycle_msgs"
+version = "1.2.1"
+
+[[patch.unused]]
+name = "nav_msgs"
+version = "4.2.4"
 
 [[patch.unused]]
 name = "px4_msgs"
@@ -244,6 +328,10 @@ name = "rclrs"
 version = "0.4.1"
 
 [[patch.unused]]
+name = "rclrs_example_msgs"
+version = "0.4.1"
+
+[[patch.unused]]
 name = "rosgraph_msgs"
 version = "1.2.1"
 
@@ -252,7 +340,35 @@ name = "rosidl_runtime_rs"
 version = "0.4.1"
 
 [[patch.unused]]
+name = "rust_pubsub"
+version = "0.1.0"
+
+[[patch.unused]]
+name = "sensor_msgs"
+version = "4.2.4"
+
+[[patch.unused]]
+name = "shape_msgs"
+version = "4.2.4"
+
+[[patch.unused]]
+name = "singularity"
+version = "0.1.0"
+
+[[patch.unused]]
+name = "statistics_msgs"
+version = "1.2.1"
+
+[[patch.unused]]
 name = "std_msgs"
+version = "4.2.4"
+
+[[patch.unused]]
+name = "std_srvs"
+version = "4.2.4"
+
+[[patch.unused]]
+name = "stereo_msgs"
 version = "4.2.4"
 
 [[patch.unused]]
@@ -260,5 +376,13 @@ name = "test_msgs"
 version = "1.2.1"
 
 [[patch.unused]]
+name = "trajectory_msgs"
+version = "4.2.4"
+
+[[patch.unused]]
 name = "unique_identifier_msgs"
 version = "2.2.1"
+
+[[patch.unused]]
+name = "visualization_msgs"
+version = "4.2.4"

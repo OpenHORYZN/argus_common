@@ -1,4 +1,4 @@
-use crate::{ControlRequest, ControlResponse, GlobalPosition, LocalPosition, MissionNode};
+use crate::{ControlRequest, ControlResponse, GlobalPosition, LocalPosition, MissionPlan};
 use macros::interface;
 use serde::{Deserialize, Serialize};
 
@@ -8,7 +8,7 @@ interface!(IYaw, "yaw", f32);
 interface!(IControlRequest, "control/in", ControlRequest);
 interface!(IControlResponse, "control/out", ControlResponse);
 interface!(IMissionStep, "mission/step", i32);
-interface!(IMissionUpdate, "mission/update", Vec<MissionNode>);
+interface!(IMissionUpdate, "mission/update", MissionPlan);
 
 pub trait Interface {
     type Message: Serialize + for<'a> Deserialize<'a>;

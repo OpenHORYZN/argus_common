@@ -6,21 +6,45 @@ use std::{
 
 use nalgebra::Vector3;
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 
 pub mod interface;
 
 #[derive(Debug, Clone, PartialEq, PartialOrd, Serialize, Deserialize)]
 pub enum ControlRequest {
     FetchMissionPlan,
+    PauseResume(bool),
 }
 
 #[derive(Debug, Clone, PartialEq, PartialOrd, Serialize, Deserialize)]
 pub enum ControlResponse {
-    SendMissionPlan(Vec<MissionNode>),
+    SendMissionPlan(MissionPlan),
+    PauseResume(bool),
 }
 
 #[derive(Debug, Clone, PartialEq, PartialOrd, Serialize, Deserialize)]
-pub enum MissionNode {
+pub struct MissionPlan {
+    pub id: Uuid,
+    pub nodes: Vec<MissionNode>,
+}
+
+impl Display for MissionPlan {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let id: String = self.id.to_string().chars().take(8).collect();
+        let nds: Vec<String> = self.nodes.iter().map(|n| format!("{:?}", n.item)).collect();
+        let nds = nds.join(", ");
+        write!(f, "Mission {id} [{nds}]")
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, PartialOrd, Serialize, Deserialize)]
+pub struct MissionNode {
+    pub id: Uuid,
+    pub item: MissionItem,
+}
+
+#[derive(Debug, Clone, PartialEq, PartialOrd, Serialize, Deserialize)]
+pub enum MissionItem {
     Init,
     Takeoff { altitude: f64 },
     Waypoint(Waypoint),
