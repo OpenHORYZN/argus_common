@@ -26,6 +26,15 @@ pub enum ControlResponse {
 pub struct MissionPlan {
     pub id: Uuid,
     pub nodes: Vec<MissionNode>,
+    pub params: MissionParams,
+}
+
+#[derive(Debug, Clone, PartialEq, PartialOrd, Serialize, Deserialize)]
+pub struct MissionParams {
+    pub target_velocity: Vector3<f64>,
+    pub target_acceleration: Vector3<f64>,
+    pub target_jerk: Vector3<f64>,
+    pub disable_yaw: bool,
 }
 
 impl Display for MissionPlan {
