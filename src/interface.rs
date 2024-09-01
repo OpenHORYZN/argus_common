@@ -1,10 +1,12 @@
 use crate::{ControlRequest, ControlResponse, GlobalPosition, LocalPosition, MissionPlan};
 use macros::interface;
+use nalgebra::Vector3;
 use serde::{Deserialize, Serialize};
 
 interface!(ILocalPosition, "local_position", LocalPosition);
 interface!(IGlobalPosition, "global_position", GlobalPosition);
 interface!(IYaw, "yaw", f32);
+interface!(IVelocity, "velocity", Vector3<f64>);
 interface!(IControlRequest, "control/in", ControlRequest);
 interface!(IControlResponse, "control/out", ControlResponse);
 interface!(IMissionStep, "mission/step", i32);
